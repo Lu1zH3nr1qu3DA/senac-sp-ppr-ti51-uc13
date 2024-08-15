@@ -70,7 +70,7 @@ namespace sisBiblioteca
 
                 case "E":
                     int codigo = Convert.ToInt32(tbcodigo.Text);
-                    AlunoBLL objexcluir = new AlunoBLL();
+                    EditoraBLL objexcluir = new EditoraBLL();
                     objexcluir.Excluir(codigo);
                     LimpaTela();
                     MessageBox.Show("Exclusão com sucesso!");

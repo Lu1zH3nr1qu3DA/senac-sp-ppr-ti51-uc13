@@ -118,7 +118,7 @@ namespace DAL
                                 " LIKE " +
                                     " @Nome " +
                                 " ORDER BY " +
-                                    " Nome ";
+                                    " Editora.Nome ";
 
                 consulta.AdicionarParametro("@Nome", SqlDbType.VarChar, nome + "%");
 
