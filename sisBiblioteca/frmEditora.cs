@@ -70,7 +70,7 @@ namespace sisBiblioteca
 
                 case "E":
                     int codigo = Convert.ToInt32(tbcodigo.Text);
-                    AlunoBLL objexcluir = new AlunoBLL();
+                    EditoraBLL objexcluir = new EditoraBLL();
                     objexcluir.Excluir(codigo);
                     LimpaTela();
                     MessageBox.Show("Exclusão com sucesso!");
@@ -98,9 +98,10 @@ namespace sisBiblioteca
             LimpaTela();
 
             operacao = "I";
-            
+
+            rbcadastrar.Checked = true;
             plocaliza.Visible = false;
-            
+
             tbnome.Focus();
         }
 
@@ -140,7 +141,17 @@ namespace sisBiblioteca
             tbtelefone.Text = dgveditoras.CurrentRow.Cells[4].Value.ToString();
             cbcidade.SelectedValue = Convert.ToInt32(dgveditoras.CurrentRow.Cells[5].Value.ToString());
 
-            plocaliza.Visible = false;
+            btconfirmar.Focus();
+        }
+
+        private void plocaliza_VisibleChanged(object sender, EventArgs e)
+        {
+            if (plocaliza.Visible == true)
+            {
+                tbselecionar.Text = "A";
+                tbselecionar.Text = "";
+                tbselecionar.Focus();
+            }
         }
     }
 }

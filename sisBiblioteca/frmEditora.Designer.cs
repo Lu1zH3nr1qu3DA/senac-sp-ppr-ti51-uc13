@@ -174,6 +174,7 @@
             this.plocaliza.Size = new System.Drawing.Size(321, 377);
             this.plocaliza.TabIndex = 13;
             this.plocaliza.Visible = false;
+            this.plocaliza.VisibleChanged += new System.EventHandler(this.plocaliza_VisibleChanged);
             // 
             // label1
             // 

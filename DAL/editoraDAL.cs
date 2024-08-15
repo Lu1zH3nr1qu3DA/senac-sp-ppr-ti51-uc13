@@ -145,7 +145,6 @@ namespace DAL
             {
                 throw new Exception("Erro do banco: " + ex.Message);
             }
-
         }
 
         public void Alterar(editoraMOD objDados)
