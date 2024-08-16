@@ -141,7 +141,7 @@ namespace sisBiblioteca
             tbtelefone.Text = dgveditoras.CurrentRow.Cells[4].Value.ToString();
             cbcidade.SelectedValue = Convert.ToInt32(dgveditoras.CurrentRow.Cells[5].Value.ToString());
 
-            btconfirmar.Focus();
+            tbnome.Focus();
         }
 
         private void plocaliza_VisibleChanged(object sender, EventArgs e)
