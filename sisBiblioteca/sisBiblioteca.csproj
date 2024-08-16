@@ -94,6 +94,9 @@
     <EmbeddedResource Include="frmEditora.resx">
       <DependentUpon>frmEditora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLivro.resx">
+      <DependentUpon>frmLivro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmprincipal.resx">
       <DependentUpon>frmprincipal.cs</DependentUpon>
     </EmbeddedResource>
