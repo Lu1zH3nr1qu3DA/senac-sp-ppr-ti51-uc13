@@ -43,9 +43,10 @@
   <ItemGroup>
     <Compile Include="AlunoMOD.cs" />
     <Compile Include="AutorMOD.cs" />
-    <Compile Include="cidadeDAL.cs" />
+    <Compile Include="CidadeMOD.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="editoraMOD.cs" />
+    <Compile Include="EditoraMOD.cs" />
+    <Compile Include="LivroMOD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

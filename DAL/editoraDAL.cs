@@ -33,7 +33,7 @@ namespace DAL
             }
         }
 
-        public void Insere(editoraMOD objDados)
+        public void Insere(EditoraMOD objDados)
         {
             //Objeto de conexao com o banco de dados
             AcessoDados consulta = new AcessoDados();
@@ -63,7 +63,7 @@ namespace DAL
 
         }
 
-        public List<editoraMOD> BuscaTodos()
+        public List<EditoraMOD> BuscaTodos()
         {
             AcessoDados consulta = new AcessoDados();
 
@@ -75,10 +75,10 @@ namespace DAL
 
                 DataTable registros = consulta.ExecutaConsulta(SQL);
 
-                var lista = new List<editoraMOD>();
+                var lista = new List<EditoraMOD>();
                 foreach (DataRow linha in registros.Rows)
                 {
-                    lista.Add(new editoraMOD
+                    lista.Add(new EditoraMOD
                     {
                         Codigo = Convert.ToInt32(linha["CODIGO"]),
                         Nome = Convert.ToString(linha["Nome"]),
@@ -97,7 +97,7 @@ namespace DAL
 
         }
 
-        public List<editoraMOD> BuscaPornome(string nome)
+        public List<EditoraMOD> BuscaPornome(string nome)
         {
             AcessoDados consulta = new AcessoDados();
 
@@ -124,10 +124,10 @@ namespace DAL
 
                 DataTable registros = consulta.ExecutaConsulta(SQL);
 
-                var lista = new List<editoraMOD>();
+                var lista = new List<EditoraMOD>();
                 foreach (DataRow linha in registros.Rows)
                 {
-                    lista.Add(new editoraMOD
+                    lista.Add(new EditoraMOD
                     {
                         Codigo = Convert.ToInt32(linha["Codigo"]),
                         Nome = Convert.ToString(linha["Nome"]),
@@ -147,7 +147,7 @@ namespace DAL
             }
         }
 
-        public void Alterar(editoraMOD objDados)
+        public void Alterar(EditoraMOD objDados)
         {
             //Objeto de conexao com o banco de dados
             AcessoDados consulta = new AcessoDados();

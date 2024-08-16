@@ -8,39 +8,39 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class EditoraBLL
+    public class LivroBLL
     {
         public void Excluir(int codigo)
         {
-            EditoraDAL objexcluir = new EditoraDAL();
+            LivroDAL objexcluir = new LivroDAL();
             objexcluir.excluir(codigo);
         }
 
 
-        public void Alterar(EditoraMOD objdados)
+        public void Alterar(LivroMOD objdados)
         {
-            EditoraDAL objalterar = new EditoraDAL();
+            LivroDAL objalterar = new LivroDAL();
             objalterar.Alterar(objdados);
         }
 
-        public List<EditoraMOD> BuscarTodos()
+        public List<LivroMOD> BuscarTodos()
         {
-            EditoraDAL objbuscar = new EditoraDAL();
+            LivroDAL objbuscar = new LivroDAL();
             return (objbuscar.BuscaTodos());
         }
 
-        public List<EditoraMOD> LocalizaPorNome(string nome)
+        public List<LivroMOD> LocalizaPorNome(string nome)
         {
-            EditoraDAL objbuscar = new EditoraDAL();
+            LivroDAL objbuscar = new LivroDAL();
             return (objbuscar.BuscaPornome(nome));
         }
 
 
-        public int Inserir(EditoraMOD objdados)
+        public int Inserir(LivroMOD objdados)
         {
-            if (objdados.Nome.Trim() != "")
+            if (objdados.Titulo.Trim() != "")
             {
-                EditoraDAL objInsere = new EditoraDAL();
+                LivroDAL objInsere = new LivroDAL();
                 objInsere.Insere(objdados);
                 return 1;
             }

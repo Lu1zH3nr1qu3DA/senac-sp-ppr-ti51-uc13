@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class cidadeDAL
+    public class CidadeDAL
     {
-        public List<cidadeMOD> SelecionaTodos()
+        public List<CidadeMOD> SelecionaTodos()
         {
             AcessoDados consulta = new AcessoDados();
 
@@ -22,11 +22,11 @@ namespace DAL
                             " FROM cidade ORDER BY NOME DESC";
                 DataTable registros = consulta.ExecutaConsulta(SQL);
 
-                var listaAluno = new List<cidadeMOD>();
+                var listaAluno = new List<CidadeMOD>();
 
                 foreach (DataRow linha in registros.Rows)
                 {
-                    listaAluno.Add(new cidadeMOD
+                    listaAluno.Add(new CidadeMOD
                     {
                         CidadeId = Convert.ToInt32(linha["CidadeId"]),
                         Nome = Convert.ToString(linha["Nome"])

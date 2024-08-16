@@ -44,10 +44,11 @@
     <Compile Include="AcessoDados.cs" />
     <Compile Include="AlunoDAL.cs" />
     <Compile Include="AutorDAL.cs" />
-    <Compile Include="cidadeDAL.cs" />
+    <Compile Include="CidadeDAL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Dados.cs" />
     <Compile Include="EditoraDAL.cs" />
+    <Compile Include="LivroDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -61,5 +61,11 @@ namespace sisBiblioteca
         {
 
         }
+
+        private void livroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLivro telalivro = new frmLivro();
+            telalivro.ShowDialog();
+        }
     }
 }

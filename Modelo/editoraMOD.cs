@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo
 {
-    public class editoraMOD
+    public class EditoraMOD
     {
         public int Codigo { get; set; }
         public string Nome { get; set; }

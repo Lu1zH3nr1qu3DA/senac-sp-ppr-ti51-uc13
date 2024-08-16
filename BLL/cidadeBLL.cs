@@ -10,9 +10,9 @@ namespace BLL
 {
     public class cidadeBLL
     {
-        public List<cidadeMOD> CarregarCidade()
+        public List<CidadeMOD> CarregarCidade()
         {
-            cidadeDAL objcaregar= new cidadeDAL();
+            CidadeDAL objcaregar= new CidadeDAL();
             return objcaregar.SelecionaTodos();
         }
     }

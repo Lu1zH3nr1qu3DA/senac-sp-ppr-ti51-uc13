@@ -41,7 +41,7 @@ namespace sisBiblioteca
 
         private void btconfirmar_Click(object sender, EventArgs e)
         {
-            editoraMOD objdados = new editoraMOD();
+            EditoraMOD objdados = new EditoraMOD();
             objdados.Nome = tbnome.Text;
             objdados.Endereco = tbendereco.Text;
             objdados.Telefone = tbtelefone.Text;
