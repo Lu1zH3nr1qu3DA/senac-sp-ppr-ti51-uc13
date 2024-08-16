@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class cidadeBLL
+    public class CidadeBLL
     {
         public List<CidadeMOD> CarregarCidade()
         {

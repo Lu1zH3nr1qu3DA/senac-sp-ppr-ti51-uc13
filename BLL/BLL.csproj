@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="AlunoBLL.cs" />
     <Compile Include="AutorBLL.cs" />
-    <Compile Include="cidadeBLL.cs" />
+    <Compile Include="CidadeBLL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="EditoraBLL.cs" />
     <Compile Include="LivroBLL.cs" />

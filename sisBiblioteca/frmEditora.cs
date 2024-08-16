@@ -28,15 +28,10 @@ namespace sisBiblioteca
 
         public void CarregaCidade()
         {
-            cidadeBLL objCarregar= new cidadeBLL();
+            CidadeBLL objCarregar= new CidadeBLL();
             cbcidade.DataSource = objCarregar.CarregarCidade();
             cbcidade.DisplayMember= "Nome";
             cbcidade.ValueMember= "CidadeId";
-        }
-
-        private void cbcidade_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btconfirmar_Click(object sender, EventArgs e)

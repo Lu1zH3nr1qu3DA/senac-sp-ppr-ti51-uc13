@@ -62,7 +62,6 @@
             this.cbcidade.Name = "cbcidade";
             this.cbcidade.Size = new System.Drawing.Size(252, 21);
             this.cbcidade.TabIndex = 0;
-            this.cbcidade.SelectedIndexChanged += new System.EventHandler(this.cbcidade_SelectedIndexChanged);
             // 
             // lbcodigo
             // 
