@@ -93,18 +93,16 @@ namespace DAL
 
                 DataTable registros = consulta.ExecutaConsulta(SQL);
 
-                var lista = new List<EditoraMOD>();
+                var lista = new List<EmprestimoMOD>();
                 foreach (DataRow linha in registros.Rows)
                 {
                     lista.Add(new EmprestimoMOD
                     {
                         Codigo = Convert.ToInt32(linha["Codigo"]),
-                        Nome = Convert.ToString(linha["Nome"]),
-                        Email = Convert.ToString(linha["Email"]),
-                        Endereco = Convert.ToString(linha["Endereco"]),
-                        Telefone = Convert.ToString(linha["Telefone"]),
-                        CodigoCidade = Convert.ToInt32(linha["CidadeCodigo"]),
-                        CidadeNome = Convert.ToString(linha["CidadeNome"])
+                        DataEmprestimo = Convert.ToDateTime(linha["DataEmprestimo"]),
+                        DataDevolucao = Convert.ToDateTime(linha["DataDevolucao"]),
+                        AlunoCodigo = Convert.ToInt32(linha["AlunoCodigo"]),
+                        AlunoNome = Convert.ToString(linha["Nome"])
                     });
                 }
                 return (lista);
@@ -116,7 +114,7 @@ namespace DAL
             }
         }
 
-        public void Alterar(EditoraMOD objDados)
+        public void Alterar(EmprestimoMOD objDados)
         {
             //Objeto de conexao com o banco de dados
             AcessoDados consulta = new AcessoDados();
@@ -126,17 +124,16 @@ namespace DAL
                 consulta.LimparParametros();
 
                 string SQL = " UPDATE " +
-                                " Editora " +
-                                " SET Nome = @Nome, endereco = @endereco, Email = @Email, cidadecodigo = @cidadecodigo, telefone = @telefone " +
+                                " Emprestimo " +
+                                " SET " +
+                                    " DataDevolucao = @DataDevolucao, AlunoCodigo = @AlunoCodigo, Observacao = @Observacao " +
                              " WHERE " +
                                 " Codigo = @Codigo ";
 
                 //Passagem dos valores para os parametros
-                consulta.AdicionarParametro("@Nome", SqlDbType.VarChar, objDados.Nome);
-                consulta.AdicionarParametro("@Email", SqlDbType.VarChar, objDados.Email);
-                consulta.AdicionarParametro("@endereco", SqlDbType.VarChar, objDados.Endereco);
-                consulta.AdicionarParametro("@telefone", SqlDbType.VarChar, objDados.Telefone);
-                consulta.AdicionarParametro("@cidadecodigo", SqlDbType.Int, objDados.CodigoCidade);
+                consulta.AdicionarParametro("@DataDevolucao", SqlDbType.DateTime, objDados.DataDevolucao);
+                consulta.AdicionarParametro("@AlunoCodigo", SqlDbType.Int, objDados.AlunoCodigo);
+                consulta.AdicionarParametro("@Observacao", SqlDbType.VarChar, objDados.Observacao);
                 consulta.AdicionarParametro("@Codigo", SqlDbType.VarChar, objDados.Codigo);
 
                 consulta.ExecutaAtualizacao(SQL);

@@ -13,5 +13,6 @@ namespace Modelo
         public DateTime DataDevolucao { get; set; }
         public string Observacao { get; set; }
         public int AlunoCodigo { get; set; }
+        public string AlunoNome { get; set; }
     }
 }

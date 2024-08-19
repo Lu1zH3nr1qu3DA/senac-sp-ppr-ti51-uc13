@@ -46,7 +46,7 @@ namespace sisBiblioteca
             EditoraBLL objCarregar = new EditoraBLL();
             cbeditora.DataSource = objCarregar.CarregarEditora();
             cbeditora.DisplayMember = "Nome";
-            cbeditora.ValueMember = "CidadeId";
+            cbeditora.ValueMember = "Codigo";
         }
 
         public void CarregarAutor()
@@ -54,7 +54,7 @@ namespace sisBiblioteca
             AutorBLL objCarregar = new AutorBLL();
             cbautor.DataSource = objCarregar.CarregarAutor();
             cbautor.DisplayMember = "Nome";
-            cbautor.ValueMember = "CidadeId";
+            cbautor.ValueMember = "Codigo";
         }
 
         string operacao;
