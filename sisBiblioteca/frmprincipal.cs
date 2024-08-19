@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace sisBiblioteca
 {
-    public partial class frmprincipal : Form
+    public partial class frmPrincipal : Form
     {
-        public frmprincipal()
+        public frmPrincipal()
         {
             InitializeComponent();
         }

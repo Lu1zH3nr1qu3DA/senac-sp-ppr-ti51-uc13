@@ -1,6 +1,6 @@
 ﻿namespace sisBiblioteca
 {
-    partial class frmprincipal
+    partial class frmPrincipal
     {
         /// <summary>
         /// Required designer variable.

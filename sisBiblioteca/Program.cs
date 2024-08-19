@@ -16,7 +16,7 @@ namespace sisBiblioteca
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmprincipal());
+            Application.Run(new frmPrincipal());
         }
     }
 }
