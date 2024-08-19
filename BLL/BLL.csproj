@@ -47,6 +47,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="EditoraBLL.cs" />
     <Compile Include="EmprestimoBLL.cs" />
+    <Compile Include="ItemEmprestimoBLL.cs" />
     <Compile Include="LivroBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
