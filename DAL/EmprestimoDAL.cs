@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public  class EditoraDAL
+    public class EmprestimoDAL
     {
-
         public void excluir(int codigo)
         {
             //Objeto de conexao com o banco de dados
@@ -20,7 +19,7 @@ namespace DAL
             {
                 consulta.LimparParametros();
 
-                string SQL = " DELETE FROM Editora WHERE Codigo = @Codigo ";
+                string SQL = " DELETE FROM Emprestimo WHERE Codigo = @Codigo ";
 
                 //Passagem dos valores para os parametros
                 consulta.AdicionarParametro("@Codigo", SqlDbType.Int, codigo);
@@ -33,7 +32,7 @@ namespace DAL
             }
         }
 
-        public void Insere(EditoraMOD objDados)
+        public int Insere(EmprestimoMOD objDados)
         {
             //Objeto de conexao com o banco de dados
             AcessoDados consulta = new AcessoDados();
@@ -42,19 +41,23 @@ namespace DAL
             {
                 consulta.LimparParametros();
 
-                string SQL = "Insert into editora (Nome, Email, endereco, telefone, cidadecodigo) " +
-                             " values (@Nome, @Email, @endereco, @telefone, @cidadecodigo) ";
+                string SQL = " INSERT INTO Emprestimo (DataEmprestimo, DataDevolucao) " +
+                                " VALUES (@DataEmprestimo, @DataDevolucao) SELECT @@identity AS Codigo";
 
                 //Passagem dos valores para os parametros
-                consulta.AdicionarParametro("@Nome", SqlDbType.VarChar, objDados.Nome);                
-                consulta.AdicionarParametro("@Email", SqlDbType.VarChar, objDados.Email);
-                consulta.AdicionarParametro("@endereco", SqlDbType.VarChar, objDados.Endereco);
-                consulta.AdicionarParametro("@telefone", SqlDbType.VarChar, objDados.Telefone);
-                consulta.AdicionarParametro("@codigocidade", SqlDbType.Int, objDados.CodigoCidade);
+                consulta.AdicionarParametro("@DataEmprestimo", SqlDbType.DateTime, objDados.DataEmprestimo);
+                consulta.AdicionarParametro("@DataDevolucao", SqlDbType.DateTime, objDados.DataDevolucao);
 
+                DataTable registros = consulta.ExecutaConsulta(SQL);
 
-                consulta.ExecutaAtualizacao(SQL);
+                int codigo = 0;
 
+                foreach (DataRow linha in registros.Rows)
+                {
+                    codigo = Convert.ToInt32(linha["codigo"]);
+                }
+
+                return codigo;
             }
             catch (Exception ex)
             {
@@ -63,41 +66,7 @@ namespace DAL
 
         }
 
-        public List<EditoraMOD> BuscaTodos()
-        {
-            AcessoDados consulta = new AcessoDados();
-
-            try
-            {
-                consulta.LimparParametros();
-                string SQL = " SELECT CODIGO, NOME, Email, Endereco,  telefone, cidadecodigo " +
-                             " FROM editora ORDER BY NOME ";
-
-                DataTable registros = consulta.ExecutaConsulta(SQL);
-
-                var lista = new List<EditoraMOD>();
-                foreach (DataRow linha in registros.Rows)
-                {
-                    lista.Add(new EditoraMOD
-                    {
-                        Codigo = Convert.ToInt32(linha["CODIGO"]),
-                        Nome = Convert.ToString(linha["Nome"]),
-                        Email = Convert.ToString(linha["Email"]),
-                        Endereco = Convert.ToString(linha["endereco"]),
-                        Telefone = Convert.ToString(linha["telefone"])
-                    });
-                }
-                return (lista);
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro do banco: " + ex.Message);
-            }
-
-        }
-
-        public List<EditoraMOD> BuscaPornome(string nome)
+        public List<EmprestimoMOD> BuscaPornome(string nome)
         {
             AcessoDados consulta = new AcessoDados();
 
@@ -105,16 +74,16 @@ namespace DAL
             {
                 consulta.LimparParametros();
                 string SQL = " SELECT " +
-                                " Editora.Codigo, Editora.Nome, Editora.Email, Editora.Endereco, Editora.Telefone, " +
-                                " Cidade.Nome AS CidadeNome, Editora.CidadeCodigo " +
+                                " Emprestimo.Codigo, Emprestimo.DataEmprestimo, Emprestimo.DataDevolucao, Emprestimo.Observacao, " +
+                                " Aluno.Nome " +
                              " FROM " +
-                                " Editora " +
+                                " Emprestimo " +
                                 " LEFT OUTER JOIN " +
-                                    " Cidade " +
+                                    " Aluno " +
                                 " ON " +
-                                    " Editora.CidadeCodigo = Cidade.CidadeId " +
+                                    " Emprestimo.AlunoCodigo = Aluno.Codigo " +
                              " WHERE " +
-                                " Editora.Nome " +
+                                " Aluno.Nome " +
                                 " LIKE " +
                                     " @Nome " +
                                 " ORDER BY " +
@@ -145,38 +114,6 @@ namespace DAL
             {
                 throw new Exception("Erro do banco: " + ex.Message);
             }
-        }
-
-        public List<EditoraMOD> SelecionaTodos()
-        {
-            AcessoDados consulta = new AcessoDados();
-
-            try
-            {
-                consulta.LimparParametros();
-
-                string SQL = " SELECT CidadeID, NOME " +
-                            " FROM cidade ORDER BY NOME DESC";
-                DataTable registros = consulta.ExecutaConsulta(SQL);
-
-                var listaAluno = new List<EditoraMOD>();
-
-                foreach (DataRow linha in registros.Rows)
-                {
-                    listaAluno.Add(new EditoraMOD
-                    {
-                        Codigo = Convert.ToInt32(linha["CidadeId"]),
-                        Nome = Convert.ToString(linha["Nome"])
-                    });
-                }
-                return listaAluno;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro Banco: " + ex.Message);
-            }
-
         }
 
         public void Alterar(EditoraMOD objDados)

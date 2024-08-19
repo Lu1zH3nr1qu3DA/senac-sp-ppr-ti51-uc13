@@ -35,6 +35,11 @@ namespace BLL
             return (objbuscar.BuscaPornome(nome));
         }
 
+        public List<EditoraMOD> CarregarEditora()
+        {
+            EditoraDAL objcaregar = new EditoraDAL();
+            return objcaregar.SelecionaTodos();
+        }
 
         public int Inserir(EditoraMOD objdados)
         {

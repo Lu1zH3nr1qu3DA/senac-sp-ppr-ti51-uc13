@@ -41,6 +41,22 @@ namespace sisBiblioteca
             CarregarAutor();
         }
 
+        public void CarregarEditora()
+        {
+            EditoraBLL objCarregar = new EditoraBLL();
+            cbeditora.DataSource = objCarregar.CarregarEditora();
+            cbeditora.DisplayMember = "Nome";
+            cbeditora.ValueMember = "CidadeId";
+        }
+
+        public void CarregarAutor()
+        {
+            AutorBLL objCarregar = new AutorBLL();
+            cbautor.DataSource = objCarregar.CarregarAutor();
+            cbautor.DisplayMember = "Nome";
+            cbautor.ValueMember = "CidadeId";
+        }
+
         string operacao;
 
         private void rbcadastrar_CheckedChanged(object sender, EventArgs e)

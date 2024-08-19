@@ -48,6 +48,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Dados.cs" />
     <Compile Include="EditoraDAL.cs" />
+    <Compile Include="EmprestimoDAL.cs" />
     <Compile Include="LivroDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

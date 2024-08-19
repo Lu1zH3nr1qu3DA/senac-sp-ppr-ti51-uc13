@@ -10,6 +10,38 @@ namespace DAL
 {
     public  class AutorDAL
     {
+
+        public List<AutorMOD> SelecionaTodos()
+        {
+            AcessoDados consulta = new AcessoDados();
+
+            try
+            {
+                consulta.LimparParametros();
+
+                string SQL = " SELECT CidadeID, NOME " +
+                            " FROM cidade ORDER BY NOME DESC";
+                DataTable registros = consulta.ExecutaConsulta(SQL);
+
+                var listaAluno = new List<AutorMOD>();
+
+                foreach (DataRow linha in registros.Rows)
+                {
+                    listaAluno.Add(new AutorMOD
+                    {
+                        Codigo = Convert.ToInt32(linha["CidadeId"]),
+                        Nome = Convert.ToString(linha["Nome"])
+                    });
+                }
+                return listaAluno;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro Banco: " + ex.Message);
+            }
+        }
+
         public void excluir(int codigo)
         {
             //Objeto de conexao com o banco de dados

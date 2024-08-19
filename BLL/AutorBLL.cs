@@ -16,6 +16,11 @@ namespace BLL
             objexcluir.excluir(codigo);
         }
 
+        public List<AutorMOD> CarregarAutor()
+        {
+            AutorDAL objcaregar = new AutorDAL();
+            return objcaregar.SelecionaTodos();
+        }
 
         public void Alterar(AutorMOD objdados)
         {

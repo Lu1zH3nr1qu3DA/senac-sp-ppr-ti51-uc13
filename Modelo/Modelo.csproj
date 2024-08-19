@@ -46,6 +46,7 @@
     <Compile Include="CidadeMOD.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="EditoraMOD.cs" />
+    <Compile Include="EmprestimoMOD.cs" />
     <Compile Include="LivroMOD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -93,7 +93,6 @@ namespace DAL
             {
                 throw new Exception("Erro do banco: " + ex.Message);
             }
-
         }
 
         public List<LivroMOD> BuscaPornome(string nome)
