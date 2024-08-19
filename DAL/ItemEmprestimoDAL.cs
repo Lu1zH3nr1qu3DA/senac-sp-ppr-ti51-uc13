@@ -10,7 +10,7 @@ namespace DAL
 {
     public class ItemEmprestimoDAL
     {
-        public void excluir(int codigo)
+        public void excluir(int emprestimo, int livro)
         {
             //Objeto de conexao com o banco de dados
             AcessoDados consulta = new AcessoDados();
@@ -19,10 +19,16 @@ namespace DAL
             {
                 consulta.LimparParametros();
 
-                string SQL = " DELETE FROM Editora WHERE Codigo = @Codigo ";
+                string SQL = " DELETE FROM " +
+                                " Editora " +
+                                " WHERE " +
+                                    " EmprestimoCodigo = @Codigo " +
+                                    " AND " +
+                                    " LivroCodigo = @Livro";
 
                 //Passagem dos valores para os parametros
-                consulta.AdicionarParametro("@Codigo", SqlDbType.Int, codigo);
+                consulta.AdicionarParametro("@Codigo", SqlDbType.Int, emprestimo);
+                consulta.AdicionarParametro("@livro", SqlDbType.Int, livro);
 
                 consulta.ExecutaAtualizacao(SQL);
             }
@@ -58,7 +64,7 @@ namespace DAL
 
         }
 
-        public List<EditoraMOD> BuscaPornome(string nome)
+        public List<ItemEmprestimoMOD> BuscaPorCodigo(int codigo)
         {
             AcessoDados consulta = new AcessoDados();
 
@@ -66,37 +72,30 @@ namespace DAL
             {
                 consulta.LimparParametros();
                 string SQL = " SELECT " +
-                                " Editora.Codigo, Editora.Nome, Editora.Email, Editora.Endereco, Editora.Telefone, " +
-                                " Cidade.Nome AS CidadeNome, Editora.CidadeCodigo " +
+                                " ItemEmprestimo.Emprestimo.Codigo, " +
+                                " Livro.Codigo, Livro.Titulo " +
                              " FROM " +
-                                " Editora " +
+                                " ItemEmprestimo " +
                                 " LEFT OUTER JOIN " +
-                                    " Cidade " +
+                                    " Livro " +
                                 " ON " +
-                                    " Editora.CidadeCodigo = Cidade.CidadeId " +
+                                    " ItemEmprestimo.LivroCodigo = Livro.Codigo" +
                              " WHERE " +
-                                " Editora.Nome " +
-                                " LIKE " +
-                                    " @Nome " +
-                                " ORDER BY " +
-                                    " Nome ";
+                                " ItemEmprestimo.EmprestimoCodigo = @Codigo ";
 
-                consulta.AdicionarParametro("@Nome", SqlDbType.VarChar, nome + "%");
+                consulta.AdicionarParametro("@Codigo", SqlDbType.Int, codigo);
 
                 DataTable registros = consulta.ExecutaConsulta(SQL);
 
-                var lista = new List<EditoraMOD>();
+                var lista = new List<ItemEmprestimoMOD>();
                 foreach (DataRow linha in registros.Rows)
                 {
-                    lista.Add(new EditoraMOD
+                    lista.Add(new ItemEmprestimoMOD
                     {
-                        Codigo = Convert.ToInt32(linha["Codigo"]),
-                        Nome = Convert.ToString(linha["Nome"]),
-                        Email = Convert.ToString(linha["Email"]),
-                        Endereco = Convert.ToString(linha["Endereco"]),
-                        Telefone = Convert.ToString(linha["Telefone"]),
-                        CodigoCidade = Convert.ToInt32(linha["CidadeCodigo"]),
-                        CidadeNome = Convert.ToString(linha["CidadeNome"])
+                        EmprestimoCodigo = Convert.ToInt32(linha["EmprestimoCodigo"]),
+                        LivroCodigo = Convert.ToInt32(linha["LivroCodigo"]),
+                        LivroNome = Convert.ToString(linha["Titulo"])
+
                     });
                 }
                 return (lista);
@@ -108,7 +107,7 @@ namespace DAL
             }
         }
 
-        public List<EditoraMOD> SelecionaTodos()
+        public List<ItemEmprestimoMOD> SelecionaTodos()
         {
             AcessoDados consulta = new AcessoDados();
 
@@ -120,17 +119,18 @@ namespace DAL
                             " FROM cidade ORDER BY NOME DESC";
                 DataTable registros = consulta.ExecutaConsulta(SQL);
 
-                var listaAluno = new List<EditoraMOD>();
+                var listaItemEmprestimo = new List<ItemEmprestimoMOD>();
 
                 foreach (DataRow linha in registros.Rows)
                 {
-                    listaAluno.Add(new EditoraMOD
+                    listaItemEmprestimo.Add(new ItemEmprestimoMOD
                     {
-                        Codigo = Convert.ToInt32(linha["CidadeId"]),
-                        Nome = Convert.ToString(linha["Nome"])
+                        EmprestimoCodigo = Convert.ToInt32(linha["EmprestimoCodigo"]),
+                        LivroCodigo = Convert.ToInt32(linha["LivroCodigo"]),
+                        LivroNome = Convert.ToString(linha["Titulo"])
                     });
                 }
-                return listaAluno;
+                return listaItemEmprestimo;
 
             }
             catch (Exception ex)
