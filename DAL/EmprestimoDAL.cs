@@ -96,7 +96,7 @@ namespace DAL
                 var lista = new List<EditoraMOD>();
                 foreach (DataRow linha in registros.Rows)
                 {
-                    lista.Add(new EditoraMOD
+                    lista.Add(new EmprestimoMOD
                     {
                         Codigo = Convert.ToInt32(linha["Codigo"]),
                         Nome = Convert.ToString(linha["Nome"]),
